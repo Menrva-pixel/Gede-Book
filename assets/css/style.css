@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -5,7 +7,7 @@
 }
 
 body, input, button {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 input, button {
@@ -172,6 +174,7 @@ main {
 
 /*--------------POP UP DIALOG------------------*/
 .dialog {
+
     position: fixed;
     top: 0;
     left: 0;
@@ -181,7 +184,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(196, 20, 20);
   }
   
   .dialog p {
@@ -202,4 +205,14 @@ main {
   
   .dialog button:hover {
     background-color: #1976D2;
+  }
+
+  button {
+    float: right;
+    position: inherit;
+  }
+
+  button img {
+    width: 25px;
+    height: 25px;
   }
