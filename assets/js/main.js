@@ -3,6 +3,7 @@ const STORAGE_KEY = "BOOK_APPS";
 const BOOK_ITEMID = "itemId";
 
 
+
 /*-----------------Tambah Buku-----------------*/
 function makeBook(book) {
   const bookTitle = document.createElement("h3");
@@ -32,7 +33,7 @@ function makeBook(book) {
 }
 
 /*----------------------Detail Buku------------------*/
-function addBooks() {
+function tambahBuku() {
   const textBook = document.getElementById("inputBookTitle").value;
   const author = document.getElementById("inputBookAuthor").value;
   const year = document.getElementById("inputBookYear").value;

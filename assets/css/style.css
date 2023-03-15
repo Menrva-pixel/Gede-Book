@@ -28,20 +28,23 @@ main {
     width: 80%;
     margin: 0 auto;
     padding: 16px;
-
+    
 }
 
 .input_section {
+    background: #2196F3;
     display: flex;
     flex-direction: column;
     padding: 16px;
-    border: 1px solid black;
+    border: 2px solid black;
+    box-shadow: 0px 6px 0px #1976D2;
     border-radius: 10px;
 }
 
 .input_section > h2 {
     text-align: center;
-    color: cornflowerblue;
+    color: rgb(209, 210, 211);
+    filter: drop-shadow(0px 2px 0px #414141);
 }
 
 .input_section > form > .input {
@@ -72,7 +75,8 @@ main {
 
 
 .input_section > form > .input > label {
-    color: cornflowerblue;
+    color: #FFFFFF;
+    font-weight: 600;
     font-weight: bold;
 }
 
@@ -94,7 +98,8 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 16px;
-    border: 1px solid black;
+    border: 2px solid black;
+    box-shadow: 0px 6px 0px #1976D2;
     border-radius: 10px;
 }
 
@@ -130,7 +135,8 @@ main {
 
 .book_shelf {
     margin: 16px 0 0 0;
-    border: 1px solid black;
+    border: 2px solid black;
+    box-shadow: 0px 6px 0px #1976D2;
     padding: 16px;
     border-radius: 10px;
 }
@@ -145,7 +151,7 @@ main {
 
 .book_shelf > .book_list > .book_item {
     padding: 8px 16px 16px 16px;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     margin: 10px 0;
 }
@@ -207,12 +213,35 @@ main {
     background-color: #1976D2;
   }
 
+  .tombol {
+    display: flex;
+    flex-direction: row;
+    }
+    
   button {
-    float: right;
+    max-width: 45px;
+    max-height: 45px;
     position: inherit;
+    box-shadow: 0px 5px 0px #2196F3;
+    transition-duration: 0.2s;
+    border-radius: 10px;
+  }
+
+  button:hover {
+    transform: translateY(-0.33em);
+    border-radius: 50px;
+    box-shadow: 0px 8px 0px #2196F3;
+  }
+
+  button:active {
+    transform: translateY(0);
+    box-shadow: 0px 3px 0px #2196F3;
   }
 
   button img {
     width: 25px;
     height: 25px;
-  }
+  } 
+
+
+  
