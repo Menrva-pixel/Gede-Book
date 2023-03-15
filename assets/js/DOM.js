@@ -1,4 +1,4 @@
-const RENDER_EVENT = "render";
+
 
 // AddBooks when user clicks on the button
 document.addEventListener("DOMContentLoaded", function () {
@@ -42,3 +42,32 @@ document.addEventListener(RENDER_EVENT, function () {
       }
     }
   });
+/*-----------------POP UP setelah tombol di tekan---*/
+function showDialog(message) {
+  const dialog = document.createElement("div");
+  dialog.classList.add("dialog");
+  
+  const messageElement = document.createElement("p");
+  messageElement.innerText = message;
+  
+  const closeButton = document.createElement("button");
+  closeButton.innerText = "Tutup";
+  closeButton.addEventListener("click", function() {
+    dialog.remove();
+  });
+  
+  dialog.appendChild(messageElement);
+  dialog.appendChild(closeButton);
+  
+  document.body.appendChild(dialog);
+}
+/*--------pop up dialog setelah buku di tambahkan-----*/
+
+
+/*-------pop up dialog untuk menampilkan konfirmasi penghapusan------*/
+document.addEventListener(BOOK_REMOVED_EVENT, (event) => {
+  const bookTitle = event.detail;
+  const message = `Book '${bookTitle}' has been removed from the shelf.`;
+  alert(message);
+});
+

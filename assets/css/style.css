@@ -2,12 +2,14 @@
 
 * {
     padding: 0;
-    margin: 0;
+    margin: auto;
+    width: 100%;
     box-sizing: border-box;
 }
 
 body, input, button {
     font-family: 'Roboto', sans-serif;
+    background-color: #d3c8ab;
 }
 
 input, button {
@@ -25,74 +27,124 @@ input, button {
 
 main {
     max-width: 800px;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     padding: 16px;
     
 }
 
+h2 {
+    text-align: center;
+}
+
 .input_section {
-    background: #2196F3;
-    display: flex;
-    flex-direction: column;
+    background: #e7e4d6e7;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
     padding: 16px;
     border: 2px solid black;
     box-shadow: 0px 6px 0px #1976D2;
     border-radius: 10px;
 }
 
-.input_section > h2 {
-    text-align: center;
-    color: rgb(209, 210, 211);
-    filter: drop-shadow(0px 2px 0px #414141);
-}
-
-.input_section > form > .input {
-    margin: 8px 0;
-}
-
-.input_section > form > button {
-    background-color: cornflowerblue;
-    color: white;
-    border: 0;
-    border-radius: 5px;
-    display: block;
-    width: 100%;
-    padding: 8px;
-    cursor: pointer;
-}
-
-.input_section > form > button > span {
-    font-weight: bold;
-}
-
-.input_section > form > .input > input {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-}
-
-
-.input_section > form > .input > label {
-    color: #FFFFFF;
-    font-weight: 600;
-    font-weight: bold;
-}
-
-.input_section > form > .input_inline {
-    margin: 12px 0;
+.input_inline {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
+  }
+
+.input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 }
 
-.input_section > form > .input_inline > label {
-    color: cornflowerblue;
-    font-weight: bold;
-    margin-right: 10px;
+/* Style untuk label form */
+.input label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #3d3d3d;
 }
+
+/* Style untuk input text */
+.input input[type="text"],
+.input input[type="number"] {
+  padding: 8px;
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+  font-size: 16px;
+  color: #3d3d3d;
+}
+
+/* Style untuk input checkbox */
+.input input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Style untuk tombol submit */
+#bookSubmit {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#bookSubmit:hover {
+  background-color: #3e8e41;
+}
+
+/* Style untuk container input dan gambar */
+.input_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input_container {
+  flex: 1;
+  margin-right: 32px;
+}
+
+.tombolsub {
+    display: flex;
+    flex-direction: column;
+  }
+
+.image_container {
+  flex: 1;
+  max-width: 250px;
+}
+
+.image_container img {
+    max-width: auto;
+    max-height: 250px;
+}
+
+@media only screen and (max-width: 768px) {
+    .input_section {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px;
+      min-width: 280px;
+    }
+  
+    .input_container {
+      margin-right: 0;
+    }
+  
+    .image_container {
+      margin-bottom: 16px;
+      max-width: 100%;
+    }
+  }
+  
 
 .search_section {
+    background: #e7e4d6e7;
     margin: 16px 0;
     display: flex;
     flex-direction: column;
@@ -134,6 +186,7 @@ main {
 }
 
 .book_shelf {
+    background: #e7e4d6e7;
     margin: 16px 0 0 0;
     border: 2px solid black;
     box-shadow: 0px 6px 0px #1976D2;
@@ -141,46 +194,81 @@ main {
     border-radius: 10px;
 }
 
-.book_shelf > h2 {
-    color: cornflowerblue;
-}
-
-.book_shelf > .book_list {
-    padding: 16px;
-}
-
-.book_shelf > .book_list > .book_item {
-    padding: 8px 16px 16px 16px;
-    border: 2px solid black;
+/* Style for book container */
+.book_item {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 10px;
+    padding: 10px;
     border-radius: 5px;
-    margin: 10px 0;
-}
-
-.book_shelf > .book_list > .book_item > h3, p {
-    margin: 8px 0;
-}
-
-.book_shelf > .book_list > .book_item > .action > button {
-    border: 0;
-    padding: 5px;
-    margin: 0 5px 0 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+  }
+  
+  /* Style for book title */
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for book author and year */
+  p {
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+  }
+  
+  /* Style for action buttons */
+  .action {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  /* Style for check button */
+  .action .check_button {
+    background-color: #44c767;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.book_shelf > .book_list > .book_item > .action > .green {
-    background-color: darkgreen;
-    color: white;
-}
-
-.book_shelf > .book_list > .book_item > .action > .red {
-    background-color: darkred;
-    color: white;
-}
+  }
+  
+  /* Style for undo button */
+  .action .undo_button {
+    background-color: #ffc107;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Style for trash button */
+  .action .trash_button {
+    background-color: #e74c3c;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
 /*--------------POP UP DIALOG------------------*/
 .dialog {
-
     position: fixed;
     top: 0;
     left: 0;
@@ -190,7 +278,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(196, 20, 20);
+    background: #1976D2;
   }
   
   .dialog p {
@@ -201,9 +289,9 @@ main {
   
   .dialog button {
     font-size: 18px;
-    padding: 8px 16px;
+    padding: 8px 0px;
     border-radius: 8px;
-    background-color: #2196F3;
+    background-color: #e4e4e4;
     color: #FFFFFF;
     border: none;
     cursor: pointer;
@@ -214,22 +302,31 @@ main {
   }
 
   .tombol {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    align-items: center;
     }
-    
+ .tombol p {
+    margin: 0;
+ }   
+
+ 
+
   button {
-    max-width: 45px;
-    max-height: 45px;
+    max-width: 140px;
+    max-height: 220px;
     position: inherit;
     box-shadow: 0px 5px 0px #2196F3;
     transition-duration: 0.2s;
-    border-radius: 10px;
+    border-radius: 5px;
+    margin: auto;
+  }
+  
+  p {
+    text-align: center;
   }
 
   button:hover {
     transform: translateY(-0.33em);
-    border-radius: 50px;
     box-shadow: 0px 8px 0px #2196F3;
   }
 

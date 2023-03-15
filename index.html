@@ -19,30 +19,35 @@
   </header>
   <main>
     <section class="input_section">
-      <h2>Masukkan Buku Baru</h2>
-      <form id="inputBook">
-        <div class="input">
-          <label for="inputBookTitle">Judul</label>
-          <input id="inputBookTitle" type="text" required>
-        </div>
-        <div class="input">
-          <label for="inputBookAuthor">Penulis</label>
-          <input id="inputBookAuthor" type="text" required>
-        </div>
-        <div class="input">
-          <label for="inputBookYear">Tahun</label>
-          <input id="inputBookYear" type="number" required>
-        </div>
-        <div class="input_inline">
-          <label for="inputBookIsComplete">Selesai dibaca</label>
-          <input id="inputBookIsComplete" type="checkbox">
-        </div>
-        <div class="tombol"></div>
-        <p>Masukkan Buku ke rak <span>Belum selesai dibaca</span></p>
-        <button id="bookSubmit" type="submit">tombol</button>
-        </div>
-      </form>
+      <div class="input_container">
+        <form id="inputBook">
+          <div class="input">
+            <label for="inputBookTitle">Judul</label>
+            <input id="inputBookTitle" type="text" required>
+          </div>
+          <div class="input">
+            <label for="inputBookAuthor">Penulis</label>
+            <input id="inputBookAuthor" type="text" required>
+          </div>
+          <div class="input">
+            <label for="inputBookYear">Tahun</label>
+            <input id="inputBookYear" type="number" required>
+          </div>
+          <div class="input_inline">
+            <label for="inputBookIsComplete">Selesai dibaca</label>
+            <input id="inputBookIsComplete" type="checkbox">
+          </div>
+          <div class="tombolsub">
+            <p>Tambahkan Buku Ke dalam rak?</p>
+            <button id="bookSubmit" type="submit">add</button>
+          </div>
+        </form>
+      </div>
+      <div class="image_container">
+        <img src="assets/img/main.png" alt="membaca">
+      </div>
     </section>
+    
 
     <section class="search_section">
       <h2>Cari Buku</h2>
