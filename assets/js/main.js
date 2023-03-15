@@ -42,7 +42,6 @@ function addBooks() {
   const year = document.getElementById("inputBookYear").value;
   const isComplete = document.getElementById("inputBookIsComplete").checked;
   const generatedID = generateId();
-  showDialog("Buku berhasil ditambahkan ke rak.");
 
   const bookObject = generateBookObject(
     generatedID,
@@ -56,8 +55,16 @@ function addBooks() {
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 
-
+  const popupDialog = document.createElement("div");
+  popupDialog.innerHTML = "Buku berhasil ditambahkan!";
+  popupDialog.classList.add("popup-dialog");
+  document.body.appendChild(popupDialog);
+  setTimeout(() => {
+    document.body.removeChild(popupDialog);
+  }, 2500);
 }
+
+
 
 function generateBookObject(id, title, author, year, isComplete) {
   return {
@@ -80,59 +87,82 @@ function saveData() {
   localStorage.setItem(STORAGE_KEY, parsed);
 }
 
+
+
 /*-------tombol untuk memindahkan buku ke rak yang sudah di baca--------*/
 function createCheckButton() {
   const button = document.createElement("button");
   button.classList.add("green");
+
   const iconContainer = document.createElement("span");
-  iconContainer.innerHTML = '<svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 12H12M12 12H9M12 12V9M12 12V15M17 21H7C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V17C21 19.2091 19.2091 21 17 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round"/>';
+  iconContainer.innerHTML = '<svg width="25px" height="25px" fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12,1A11,11,0,1,0,23,12,11.013,11.013,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9.01,9.01,0,0,1,12,21Zm5-9a1,1,0,0,1-1,1H13v3a1,1,0,0,1-2,0V13H8a1,1,0,0,1,0-2h3V8a1,1,0,0,1,2,0v3h3A1,1,0,0,1,17,12Z"></path></g></svg>';
   iconContainer.style.cursor = "pointer";
-  button.addEventListener("click", function(event) {
-    event.preventDefault(); // menghentikan perilaku bawaan dari event
+
+  button.addEventListener("click", function (event) {
+    event.preventDefault();
     addBookToCompleted(event.target.closest(".book_item"));
     const searchForm = document.getElementById("searchBook");
     searchForm.reset();
   });
+
   button.appendChild(iconContainer);
+  button.setAttribute("title", "Pindahkan ke rak buku yang telah di baca?");
+
   return button;
 }
 /*-------tombol untuk memindahkan buku ke rak yang belum di baca--------*/
 function createUndoButton() {
   const button = document.createElement("button");
   button.classList.add("green");
+
   const iconContainer = document.createElement("span");
-  iconContainer.innerHTML = '<svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 12H12M12 12H9M12 12V9M12 12V15M17 21H7C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V17C21 19.2091 19.2091 21 17 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round"/>';
+  iconContainer.innerHTML = '<svg width="25px" height="25px" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 12H8M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>';
   iconContainer.style.cursor = "pointer";
-  button.addEventListener("click", function(event) {
-    event.preventDefault(); // menghentikan perilaku bawaan dari event
+
+  button.addEventListener("click", function (event) {
+    event.preventDefault();
     undoBookFromCompleted(event.target.closest(".book_item"));
     const searchForm = document.getElementById("searchBook");
     searchForm.reset();
   });
-  button.appendChild(iconContainer);
-  return button;
-}
-// CreateTrashButton function
-function createTrashButton() {
-  const button = createButton(
-    "red",
-    function (event) {
-      const parentElement = event.target.parentElement.parentElement;
-      const bookTitle = parentElement.querySelector(".book_item > h3").innerText;
-      
-      const confirmed = confirm(`Anda yakin ingin menghapus buku '${bookTitle}' dari rak?`);
-      if (confirmed) {
-        removeBookFromCompleted(parentElement);
-        document.dispatchEvent(new CustomEvent(BOOK_REMOVED_EVENT, { detail: bookTitle }));
-        const searchForm = document.getElementById("searchBook");
-        searchForm.reset();
-      }
-    },
-    "trash"
-  );
 
+  button.appendChild(iconContainer);
+  button.setAttribute("title", "Pindahkan ke rak buku yang belum di baca?");
   return button;
 }
+/*----------------------membuat tombol hapus--------------------------*/
+function createTrashButton() {
+  const button = document.createElement("button");
+  button.classList.add("red");
+
+  const iconContainer = document.createElement("span");
+  iconContainer.innerHTML = '<svg width="25px" height="25px" fill="#ffffff" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" id="memory-trash" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M10 7V16H8V7H10M12 7H14V16H12V7M8 2H14V3H19V5H18V19H17V20H5V19H4V5H3V3H8V2M6 5V18H16V5H6Z"></path></g></svg>';
+  iconContainer.style.cursor = "pointer";
+
+  button.addEventListener("click", function (event) {
+    const parentElement = event.target.parentElement.parentElement;
+    const bookTitle = parentElement.querySelector(".book_item > h3").innerText;
+
+    const confirmed = confirm(`Anda yakin ingin menghapus buku '${bookTitle}' dari rak?`);
+    if (confirmed) {
+      removeBookFromCompleted(parentElement);
+      document.dispatchEvent(new CustomEvent(BOOK_REMOVED_EVENT, {
+        detail: bookTitle
+      }));
+      const searchForm = document.getElementById("searchBook");
+      searchForm.reset();
+    }
+  });
+
+  button.appendChild(iconContainer);
+  button.setAttribute("title", "Hapus buku dari rak?");
+  return button;
+}
+
+
+
+
+
 
 // CreateButton function
 function createButton(buttonTypeClass, eventListener, text) {
@@ -146,7 +176,7 @@ function createButton(buttonTypeClass, eventListener, text) {
   return button;
 }
 
-// AddBookToCompleted function
+/*---fungsi pindah rak buku jika sudah dibaca ---*/
 function addBookToCompleted(bookElement) {
   const book = findBook(bookElement[BOOK_ITEMID]);
   book.isComplete = true;
@@ -155,7 +185,7 @@ function addBookToCompleted(bookElement) {
   saveData();
 }
 
-// UndoBookFromCompleted function
+/*---fungsi pindah rak buku jika belum dibaca ---*/
 function undoBookFromCompleted(bookElement) {
   const book = findBook(bookElement[BOOK_ITEMID]);
   book.isComplete = false;
@@ -164,7 +194,7 @@ function undoBookFromCompleted(bookElement) {
   saveData();
 }
 
-// RemoveBookFromCompleted function
+/*---hapus buku dari rak---*/
 function removeBookFromCompleted(bookElement) {
   const bookPosition = findBookIndex(bookElement);
   books.splice(bookPosition, 1);
@@ -173,7 +203,7 @@ function removeBookFromCompleted(bookElement) {
   saveData();
 }
 
-// FindBook function
+/*---- Fungsi untuk mencari buku di rak -----*/
 function findBook(bookId) {
   for (const book of books) {
     if (book.id === bookId) {
@@ -183,8 +213,7 @@ function findBook(bookId) {
   return null;
 }
 
-// FindBookIndex function
-function findBookIndex(bookId) {
+function findBookIndex(bookId) { //mencari index book
   let index = 0;
   for (const book of books) {
     if (book.id === bookId) {
@@ -197,7 +226,7 @@ function findBookIndex(bookId) {
 
 
 
-// LoadDataFromStorage function
+/*---fungsi untuk load data yang tersimpan di local storage---*/
 function loadDataFromStorage() {
   const serializedData = localStorage.getItem(STORAGE_KEY);
 
@@ -215,7 +244,7 @@ function loadDataFromStorage() {
 // IsStorageExist function
 function isStorageExist() {
   if (typeof Storage === undefined) {
-    alert("Browser kamu tidak mendukung local storage");
+    alert("Browser tidak mendukung local storage");
     return false;
   }
   return true;

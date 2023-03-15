@@ -9,7 +9,7 @@
 
 body, input, button {
     font-family: 'Roboto', sans-serif;
-    background-color: #d3c8ab;
+    background-color: #dbdbd9;
 }
 
 input, button {
@@ -21,8 +21,14 @@ input, button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: cornflowerblue;
-    color: white;
+    background-color: rgb(48, 48, 48) !important;
+    color: #dbdbd9;
+}
+
+@media only screen and (max-width: 768px) {
+  .head_bar {
+    gap: 80px;
+  }
 }
 
 main {
@@ -35,10 +41,11 @@ main {
 
 h2 {
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .input_section {
-    background: #e7e4d6e7;
+    background: #f0f0f0e7;
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr 1fr;
@@ -64,7 +71,7 @@ h2 {
 .input label {
   font-weight: bold;
   margin-bottom: 8px;
-  color: #3d3d3d;
+  color: #2f3131;
 }
 
 /* Style untuk input text */
@@ -75,26 +82,34 @@ h2 {
   border-bottom: 2px solid #e0e0e0;
   font-size: 16px;
   color: #3d3d3d;
+  -moz-appearance: textfield;
 }
 
 /* Style untuk input checkbox */
 .input input[type="checkbox"] {
-  margin-right: 8px;
+  margin-right: 12px;
 }
 
 /* Style untuk tombol submit */
 #bookSubmit {
   padding: 8px 16px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
+  background-color: #c2c2c2;
+  color: #2f3131;
+  border: 1px solid rgba(0, 0, 0, 0.63);
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
 }
 
 #bookSubmit:hover {
-  background-color: #3e8e41;
+  background-color: #11860d;
+  color: #c2c2c2;
+}
+
+@media only screen and (max-width: 768px) {
+  #bookSubmit {
+    max-width: 80px;
+  }
 }
 
 /* Style untuk container input dan gambar */
@@ -144,7 +159,7 @@ h2 {
   
 
 .search_section {
-    background: #e7e4d6e7;
+    background: #f0f0f0e7;
     margin: 16px 0;
     display: flex;
     flex-direction: column;
@@ -186,7 +201,7 @@ h2 {
 }
 
 .book_shelf {
-    background: #e7e4d6e7;
+    background: #f0f0f0e7;
     margin: 16px 0 0 0;
     border: 2px solid black;
     box-shadow: 0px 6px 0px #1976D2;
@@ -207,6 +222,7 @@ h2 {
   
   /* Style for book title */
   h3 {
+    text-align: center;
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 5px;
@@ -221,104 +237,74 @@ h2 {
   /* Style for action buttons */
   .action {
     display: flex;
+    justify-content: flex-end;
     justify-content: space-between;
     margin-top: 10px;
+    gap: 460px;
   }
-  
-  /* Style for check button */
-  .action .check_button {
-    background-color: #44c767;
-    border: none;
-    color: #fff;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 0.8rem;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  /* Style for undo button */
-  .action .undo_button {
-    background-color: #ffc107;
-    border: none;
-    color: #fff;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 0.8rem;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  /* Style for trash button */
-  .action .trash_button {
-    background-color: #e74c3c;
-    border: none;
-    color: #fff;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 0.8rem;
-    border-radius: 5px;
-    cursor: pointer;
+  .green {
+    background-color: #c2c2c2 !important;
+    border: 1px solid #2f3131;
   }
 
-/*--------------POP UP DIALOG------------------*/
-.dialog {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #1976D2;
-  }
-  
-  .dialog p {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 24px;
-  }
-  
-  .dialog button {
-    font-size: 18px;
-    padding: 8px 0px;
-    border-radius: 8px;
-    background-color: #e4e4e4;
-    color: #FFFFFF;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dialog button:hover {
-    background-color: #1976D2;
+  .red {
+    background-color: #c2c2c2 !important;
+    border: 1px solid #2f3131;
   }
 
-  .tombol {
-    display: grid;
-    align-items: center;
-    }
- .tombol p {
-    margin: 0;
- }   
+  .green:hover {
+    background-color: #40c425 !important;
+  }
+
+  .red:hover {
+    background-color: #dd2323 !important;
+  }
+
+/*--------------POP UP showDialog------------------*/
+.popup-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-weight: 600;
+}
+
+
+
 
  
-
+/*----custom tombol------*/
   button {
-    max-width: 140px;
-    max-height: 220px;
+    max-width: 100px;
+    max-height: 50px;
     position: inherit;
-    box-shadow: 0px 5px 0px #2196F3;
+    box-shadow: 0px 5px 0px #2f3131;
     transition-duration: 0.2s;
-    border-radius: 5px;
+    border-radius: 2px;
     margin: auto;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .svg {
+    color: #000;
+  }
+
+  @media only screen and (max-width: 768px) {
+    button {
+     max-height: 55px;
+     max-width: 55px;
+     border-radius: 10px;
+    }
+    
+    .action {
+      gap: 150px;
+    }
   }
   
   p {
@@ -327,12 +313,12 @@ h2 {
 
   button:hover {
     transform: translateY(-0.33em);
-    box-shadow: 0px 8px 0px #2196F3;
+    box-shadow: 0px 10px 0px #2f3131;
   }
 
   button:active {
     transform: translateY(0);
-    box-shadow: 0px 3px 0px #2196F3;
+    box-shadow: 0px 5px 0px #2f3131;
   }
 
   button img {
@@ -341,4 +327,14 @@ h2 {
   } 
 
 
-  
+ /* footer */
+ .footer {
+  background-color: #2f3131;
+  padding: 10px;
+  text-align: center;
+ }
+
+ .footer a{
+  color: #dbdbd9;
+  text-decoration: none;
+ }
