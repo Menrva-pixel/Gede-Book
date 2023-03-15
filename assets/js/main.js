@@ -12,8 +12,8 @@ function makeBook(book) {
   const bookTitle = document.createElement("h3");
   bookTitle.innerText = book.title;
 
-  const bookAuthor = document.createElement("p");
-  bookAuthor.innerText = book.author;
+  const bookpenulis = document.createElement("p");
+  bookpenulis.innerText = book.penulis;
 
   const bookYear = document.createElement("p");
   bookYear.innerText = book.year;
@@ -24,7 +24,7 @@ function makeBook(book) {
   const bookContainer = document.createElement("article");
   bookContainer.setAttribute("id", book.id);
   bookContainer.classList.add("book_item");
-  bookContainer.append(bookTitle, bookAuthor, bookYear, buttonContainer);
+  bookContainer.append(bookTitle, bookpenulis, bookYear, buttonContainer);
 
   if (book.isComplete) {
     buttonContainer.append(createUndoButton(), createTrashButton());
@@ -37,16 +37,16 @@ function makeBook(book) {
 
 /*----------------------Detail Buku------------------*/
 function addBooks() {
-  const textBook = document.getElementById("inputBookTitle").value;
-  const author = document.getElementById("inputBookAuthor").value;
+  const judulBuku = document.getElementById("inputBookTitle").value;
+  const penulis = document.getElementById("inputBookpenulis").value;
   const year = document.getElementById("inputBookYear").value;
   const isComplete = document.getElementById("inputBookIsComplete").checked;
   const generatedID = generateId();
 
   const bookObject = generateBookObject(
     generatedID,
-    textBook,
-    author,
+    judulBuku,
+    penulis,
     year,
     isComplete
   );
@@ -66,11 +66,11 @@ function addBooks() {
 
 
 
-function generateBookObject(id, title, author, year, isComplete) {
+function generateBookObject(id, title, penulis, year, isComplete) {
   return {
     id,
     title,
-    author,
+    penulis,
     year,
     isComplete,
   };

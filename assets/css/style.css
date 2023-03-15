@@ -40,6 +40,8 @@ main {
 }
 
 h2 {
+  color: #2f3131 !important;
+  font-weight: 600;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -222,6 +224,7 @@ h2 {
   
   /* Style for book title */
   h3 {
+    color: #2f3131;
     text-align: center;
     font-size: 1.2rem;
     font-weight: 700;
@@ -229,7 +232,8 @@ h2 {
   }
   
   /* Style for book author and year */
-  p {
+  .book_item p {
+    color: #e7422c;
     font-size: 0.8rem;
     margin-bottom: 3px;
   }
@@ -237,8 +241,8 @@ h2 {
   /* Style for action buttons */
   .action {
     display: flex;
-    justify-content: flex-end;
-    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-top: 10px;
     gap: 460px;
   }
