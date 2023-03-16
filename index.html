@@ -6,20 +6,29 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Bookshelf Apps</title>
+  <title>Gede Book - Digital Bookshelf App</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-HmKBZoSzYm8jzUGGpJixNXiqyCuyb1/T06vDnKd9nVf1Q2Yl/l85KjCokrT7GyT3dW3tVHfM2R9tVJgDSo+P7g==" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
   <header class="head_bar">
     <h1 class="head_bar__title">GedeBook</h1>
-    <small> aplikasi rak buku</small>
+    <small> Digital Bookshelf App</small>
   </header>
   <main>
+    <div class="welcome">
+      <h1>Selamat Datang</h1>
+       <small>Koleksi Buku Digitalmu yang Teratur dan Mudah Diakses!</small>
+    </div>
+
+
+
+
     <section class="input_section">
+      <div class="image_container">
+        <img src="assets/img/main.png" alt="membaca">
+      </div>
       <div class="input_container">
         <form id="inputBook">
           <div class="input">
@@ -44,17 +53,13 @@
           </div>
         </form>
       </div>
-      <div class="image_container">
-        <img src="assets/img/main.png" alt="membaca">
-      </div>
     </section>
     
 
     <section class="search_section">
       <h2>Cari Buku</h2>
       <form id="searchBook">
-        <label for="searchBookTitle">Judul</label>
-        <input id="searchBookTitle" type="text">
+        <input id="searchBookTitle" type="text" placeholder="Masukkan judul buku...">
         <button id="searchSubmit" type="submit">Cari</button>
       </form>
     </section>
@@ -96,9 +101,11 @@
     </section>
   </main>
 
+  
+
   <footer>
     <div class="footer">
-      <p>&copy; Copyright 2023 <a href="https://github.com/Menrva-pixel" target="_blank">Barkah Herdyanto</a></p>
+      <p>&copy; Copyright 2023 GEDEBook by <a href="https://github.com/Menrva-pixel" target="_blank">Barkah Herdyanto</a></p>
     </div>
   </footer>
 

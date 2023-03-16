@@ -12,8 +12,8 @@ function makeBook(book) {
   const bookTitle = document.createElement("h3");
   bookTitle.innerText = book.title;
 
-  const bookpenulis = document.createElement("p");
-  bookpenulis.innerText = book.penulis;
+  const bookAuthor = document.createElement("p");
+  bookAuthor.innerText = book.author;
 
   const bookYear = document.createElement("p");
   bookYear.innerText = book.year;
@@ -24,7 +24,7 @@ function makeBook(book) {
   const bookContainer = document.createElement("article");
   bookContainer.setAttribute("id", book.id);
   bookContainer.classList.add("book_item");
-  bookContainer.append(bookTitle, bookpenulis, bookYear, buttonContainer);
+  bookContainer.append(bookTitle, bookAuthor, bookYear, buttonContainer);
 
   if (book.isComplete) {
     buttonContainer.append(createUndoButton(), createTrashButton());
@@ -38,7 +38,7 @@ function makeBook(book) {
 /*----------------------Detail Buku------------------*/
 function addBooks() {
   const judulBuku = document.getElementById("inputBookTitle").value;
-  const penulis = document.getElementById("inputBookpenulis").value;
+  const author = document.getElementById("inputBookAuthor").value;
   const year = document.getElementById("inputBookYear").value;
   const isComplete = document.getElementById("inputBookIsComplete").checked;
   const generatedID = generateId();
@@ -46,7 +46,7 @@ function addBooks() {
   const bookObject = generateBookObject(
     generatedID,
     judulBuku,
-    penulis,
+    author,
     year,
     isComplete
   );
@@ -66,11 +66,11 @@ function addBooks() {
 
 
 
-function generateBookObject(id, title, penulis, year, isComplete) {
+function generateBookObject(id, title, author, year, isComplete) {
   return {
     id,
     title,
-    penulis,
+    author,
     year,
     isComplete,
   };
@@ -116,7 +116,7 @@ function createUndoButton() {
   button.classList.add("green");
 
   const iconContainer = document.createElement("span");
-  iconContainer.innerHTML = '<svg width="25px" height="25px" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 12H8M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>';
+  iconContainer.innerHTML = '<svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 12H16M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>';
   iconContainer.style.cursor = "pointer";
 
   button.addEventListener("click", function (event) {
@@ -136,7 +136,7 @@ function createTrashButton() {
   button.classList.add("red");
 
   const iconContainer = document.createElement("span");
-  iconContainer.innerHTML = '<svg width="25px" height="25px" fill="#ffffff" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" id="memory-trash" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M10 7V16H8V7H10M12 7H14V16H12V7M8 2H14V3H19V5H18V19H17V20H5V19H4V5H3V3H8V2M6 5V18H16V5H6Z"></path></g></svg>';
+  iconContainer.innerHTML = '<svg width="25px" height="25px" fill="none" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" id="memory-trash" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M10 7V16H8V7H10M12 7H14V16H12V7M8 2H14V3H19V5H18V19H17V20H5V19H4V5H3V3H8V2M6 5V18H16V5H6Z"></path></g></svg>';
   iconContainer.style.cursor = "pointer";
 
   button.addEventListener("click", function (event) {
@@ -164,7 +164,7 @@ function createTrashButton() {
 
 
 
-// CreateButton function
+/*----fungsi untuk membuat tombol----*/
 function createButton(buttonTypeClass, eventListener, text) {
   const button = document.createElement("button");
   button.classList.add(buttonTypeClass);
@@ -212,8 +212,8 @@ function findBook(bookId) {
   }
   return null;
 }
-
-function findBookIndex(bookId) { //mencari index book
+/* index pencarian */
+function findBookIndex(bookId) { 
   let index = 0;
   for (const book of books) {
     if (book.id === bookId) {
@@ -223,8 +223,6 @@ function findBookIndex(bookId) { //mencari index book
   }
   return -1;
 }
-
-
 
 /*---fungsi untuk load data yang tersimpan di local storage---*/
 function loadDataFromStorage() {
@@ -241,7 +239,7 @@ function loadDataFromStorage() {
   document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
-// IsStorageExist function
+/*----cek apakah browser mendukung local storage----*/
 function isStorageExist() {
   if (typeof Storage === undefined) {
     alert("Browser tidak mendukung local storage");
@@ -250,7 +248,7 @@ function isStorageExist() {
   return true;
 }
 
-// Search Books Function
+/*----fungsi untuk mencari buku----*/
 function searchBooks() {
   const searchTitle = document.getElementById("searchBookTitle").value;
 
@@ -286,3 +284,5 @@ function searchBooks() {
     }
   }
 }
+
+

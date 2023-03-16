@@ -1,6 +1,6 @@
 
 
-// AddBooks when user clicks on the button
+/*----- fungsi untuk menambahkan buku ketika tombol di tekan -----*/
 document.addEventListener("DOMContentLoaded", function () {
     const submitForm = document.getElementById("inputBook");
     submitForm.addEventListener("submit", function (event) {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Render function
+  /*----- R E N D E R -----*/
 document.addEventListener(RENDER_EVENT, function () {
     const uncompletedBookList = document.getElementById(
       "incompleteBookshelfList"
@@ -42,7 +42,7 @@ document.addEventListener(RENDER_EVENT, function () {
       }
     }
   });
-/*-----------------POP UP setelah tombol di tekan---*/
+/*------------POP UP setelah tombol di tekan---*/
 function showDialog(message) {
   const dialog = document.createElement("div");
   dialog.classList.add("dialog");
@@ -61,13 +61,12 @@ function showDialog(message) {
   
   document.body.appendChild(dialog);
 }
-/*--------pop up dialog setelah buku di tambahkan-----*/
 
 
 /*-------pop up dialog untuk menampilkan konfirmasi penghapusan------*/
 document.addEventListener(BOOK_REMOVED_EVENT, (event) => {
   const bookTitle = event.detail;
-  const message = `Book '${bookTitle}' has been removed from the shelf.`;
+  const message = `Buku '${bookTitle}' telah dihapus dari rak.`;
   alert(message);
 });
 
