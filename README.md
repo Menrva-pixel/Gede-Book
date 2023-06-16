@@ -8,8 +8,8 @@ Aplikasi untuk membuat daftar buku yang ingin dibaca.
 
 ## Getting Started
 
-### Dependencies
-
+### application link
+https://gede-book.netlify.app/
 * Works on any Modern Browsers
 * Windows / mac / Android
 
